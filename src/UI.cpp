@@ -327,7 +327,11 @@ void PreviewPanel::finishApply() {
     int n = m_objects ? (int)m_objects->count() : 0;
     this->unschedule(schedule_selector(PreviewPanel::tick));
     if (lel && n > 0) {
-        s_lastApplied = CCArray::createWithArray(m_objects);
+        // NOTE: CCArray::createWithArray() copies every element, and game objects
+        // can't be copied (that was the Apply crash). Just add the same objects.
+        auto kept = CCArray::create();
+        kept->addObjectsFromArray(m_objects);
+        s_lastApplied = kept;
         s_lastLayer = lel;
         log::info("apply: kept {} objects for Undo Deco", n);
         auto& g = m_sel.grid;
