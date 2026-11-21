@@ -8,7 +8,7 @@
     },
     "id": "myriam.auto-decorator",
     "name": "Auto Decorator",
-    "version": "v1.0.2",
+    "version": "v1.0.3",
     "developer": "Myriam",
     "description": "Select a structure, pick one of 20 templates and it decorates it for you - different every time, fully offline.",
     "tags": [
